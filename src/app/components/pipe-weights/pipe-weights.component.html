@@ -1,0 +1,118 @@
+<h1>Pipe Weight</h1>
+<div class="filter-wrapper">
+  <form id="filter-form">
+    <mat-form-field class="" appearance="outline">
+      <mat-label>Conduit</mat-label>
+      <mat-select id="conduitSelect" name="conduit" [ngModelOptions]="{standalone: true}" [(ngModel)]="conduitValue"  (selectionChange)="conduitSelectChanged($event)">
+        <mat-option value="Steel Pipe">Steel Pipe</mat-option>
+        <mat-option value="Copper Tubing">Copper Tubing</mat-option>
+        <mat-option value="PVC Pipe">PVC Pipe</mat-option>
+        <mat-option value="Cast Iron Pipe">Cast Iron Pipe</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="" appearance="outline" *ngIf="schedulesArray?.length > 0">
+      <mat-label>Schedule</mat-label>
+      <mat-select id="scheduleSelect" name="schedule" [ngModelOptions]="{standalone: true}" [(ngModel)]="scheduleValue" (selectionChange)="filterByScheduleOrType($event)">
+        <mat-option *ngFor="let schedule of schedulesArray" [value]="schedule">
+          {{ schedule }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="" appearance="outline" *ngIf="typesArray?.length > 0">
+      <mat-label>Type</mat-label>
+      <mat-select id="typeSelect" name="type" [ngModelOptions]="{standalone: true}" [(ngModel)]="typeValue" (selectionChange)="filterByScheduleOrType($event)">
+        <mat-option *ngFor="let pipeType of typesArray" [value]="pipeType">
+          {{ pipeType }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="" appearance="outline" *ngIf="diametersArray?.length > 0">
+      <mat-label>Dia.</mat-label>
+      <mat-select id="diaSelect" name="dia" [ngModelOptions]="{standalone: true}" [(ngModel)]="diaValue" (selectionChange)="filterByDiameter($event)">
+        <mat-option *ngFor="let dia of diametersArray" [value]="dia">
+          {{ dia }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <div class="controls-wrapper">
+    <div class="controls-button-row">
+      <button mat-raised-button color="primary" (click)="createRow()" [disabled]="!validForm">Add Row</button>
+      <button mat-raised-button color="warn" (click)="clearTable()">Clear Table</button>
+    </div>
+    <section class="controls-checkbox">
+      <mat-checkbox class="show-empty-col" (change)="checkBoxClicked($event)">Show Empty</mat-checkbox>
+    </section>
+  </div>
+
+</div>
+<div class="dataFiltered-wrapper">
+  <div class="filter-table-container">
+    <table mat-table #dataFilteredSort="matSort" id="weight-table" class="materials-table" [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="conduit">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Conduit </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="table-category-text">{{row.conduit}} ({{row.scheduleOrType}})</div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dia">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Dia. Inch </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="table-title-text"> {{row.dia}}</div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="weightEmpty" class="empty-weight-column" *ngIf="checked === true">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Weight Empty </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="table-title-text"> {{row.weightEmpty}}</div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="weightFull">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Weight Full </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="table-title-text"> {{row.weightFull}}</div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <input matInput type="number" placeholder="Quantity" [value]="row.quantity" [(ngModel)]="row.quantity" (change)="getTotalWeightForRow($event, row)" (keyup)="getTotalWeightForRow($event, row)" (focusout)="getTotalWeightForRow($event, row)">
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button>
+            <mat-icon class="delete-icon" aria-label="icon-button with a delete icon" (click)="removeRow(row)">delete_forever</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="emptyCheckBox">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button>
+            <mat-checkbox class="show-empty-col" (change)="rowcheckBoxClicked($event, row)">Use Empty</mat-checkbox>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="dataFilteredColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: dataFilteredColumns;"></mat-row>
+    </table>
+  </div>
+  <div class="total-container">
+    <p class="total"><span class="total-title">Total Weight:</span> <span class="total-amount">{{totalPipeWeight}}</span></p>
+  </div>
+
+  <!--<mat-paginator #dataFilteredPaginator class="centered" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>-->
+</div>

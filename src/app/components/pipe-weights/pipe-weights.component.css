@@ -1,0 +1,154 @@
+.filter-wrapper {
+
+}
+
+#filter-form {
+  width: 100%;
+}
+
+.mat-form-field {
+  padding-right: 10px !important;
+  width: calc(100% / 3) !important;
+}
+
+.controls-wrapper {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.controls-button-row {
+
+}
+
+.controls-button-row button.mat-raised-button.mat-primary {
+  margin-right: 10px;
+}
+
+.controls-checkbox {
+
+}
+
+.show-empty-col {
+
+}
+
+td {
+  border: 1px solid #000;
+}
+
+.dataFiltered-wrapper {
+  max-width: 100%;
+  border: 1px solid #e0e0e0;
+}
+
+.filter-table-container {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.table-filter {
+  margin-left: 20px;
+}
+
+table#weight-table {
+  min-width: 100%;
+  border-top: 1px solid #e0e0e0;
+}
+
+table#weight-table mat-header-row.mat-header-row {
+  background-color: #000;
+}
+
+table#weight-table mat-header-cell.mat-header-cell {
+  font-weight: bold;
+  color: #BA0C2F !important;
+}
+
+/* Header Styles */
+#weight-table.mat-table .mat-header-cell.mat-column-conduit {
+  min-width: 190px !important;
+}
+
+#weight-table.mat-table .mat-header-cell.mat-column-dia {
+  min-width: 90px !important;
+}
+
+#weight-table.mat-table .mat-header-cell.mat-column-weightEmpty {
+  min-width: 110px;
+}
+
+#weight-table.mat-table .mat-header-cell.mat-column-weightFull {
+  min-width: 105px;
+}
+
+#weight-table.mat-table .mat-header-cell.mat-column-quantity {
+  min-width: 85px;
+}
+
+#weight-table.mat-table .mat-header-cell.mat-column-delete {
+  min-width: 85px;
+}
+
+#weight-table.mat-table .mat-header-cell.mat-column-emptyCheckBox {
+  min-width: 120px;
+}
+
+/* Cell Styles */
+#weight-table.mat-table .mat-cell.mat-column-conduit {
+  min-width: 190px !important;
+}
+
+#weight-table.mat-table .mat-cell.mat-column-dia {
+  min-width: 90px;
+}
+
+#weight-table.mat-table .mat-cell.mat-column-weightEmpty {
+  min-width: 110px;
+}
+
+#weight-table.mat-table .mat-cell.mat-column-weightFull {
+  min-width: 105px;
+}
+
+#weight-table.mat-table .mat-cell.mat-column-quantity {
+  min-width: 85px;
+}
+
+#weight-table.mat-table .mat-cell.mat-column-delete {
+  min-width: 85px;
+}
+
+#weight-table.mat-table .mat-cell.mat-column-emptyCheckBox {
+  min-width: 120px;
+}
+
+.delete-icon:focus {
+  outline: none;
+}
+
+.delete-icon:hover {
+  color: #BA0C2F !important;
+}
+
+.total-container {
+  min-width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.total-title {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.total-amount {
+
+}
+
+mat-paginator.centered.mat-paginator {
+  width: 400px;
+  margin: 0 auto;
+}

@@ -1,0 +1,7 @@
+.bg-dark {
+  background-color: #000000 !important;
+}
+
+.nav-item.is-active .nav-link {
+  color: #BA0C2F;
+}

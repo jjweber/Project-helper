@@ -1,0 +1,27 @@
+.mat-sort-header-arrow {
+  color: #BA0C2F !important;
+}
+
+table#weight-table .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #fff !important;
+}
+
+.mat-ripple-element {
+  display: none !important;
+}
+
+table#weight-table md-checkbox.md-focused .md-container:before {
+  background-color: transparent !important;
+  display: none !important;
+}
+
+table#weight-table .md-checkbox-no-focused .md-container:before {
+  background-color: transparent !important;
+  display: none !important;
+}
+
+.cdk-focused,
+.cdk-program-focused {
+  background-color: transparent !important;
+  display: none !important;
+}

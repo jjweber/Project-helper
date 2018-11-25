@@ -1,0 +1,32 @@
+.boxed-select .mat-form-field-wrapper {
+  padding-bottom: 0!important;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem!important;
+}
+
+.boxed-select .mat-form-field-underline, .boxed-select .mat-form-field-label-wrapper {
+  display: none;
+}
+
+.boxed-select .mat-select-value {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  color: #888da8 !important;
+}
+
+.boxed-select .mat-form-field-infix {
+  border-top: 0 !important;
+  padding: 12px 0 !important;
+}
+
+.boxed-select .mat-select-arrow-wrapper {
+  padding-right: 10px !important;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background: rgba(194, 112, 200, 0.1) !important;
+}
+
+.cdk-overlay-container {
+z-index: 9999 !important;
+}

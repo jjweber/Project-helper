@@ -1,0 +1,14 @@
+<div class="file-selector-wrapper">
+  <h1>Read Excel File</h1>
+  <input type="file" class="file-input" (change)="onFileChange($event)" multiple="false" />
+</div>
+
+<div class="table-container">
+  <table class="sjs-table">
+    <tr class="uploadedTable" *ngFor="let row of data">
+      <td *ngFor="let val of row">
+        {{val}}
+      </td>
+    </tr>
+  </table>
+</div>
